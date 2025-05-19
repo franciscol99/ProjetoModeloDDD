@@ -33,6 +33,24 @@
     });
 }
 
+function EmailAleatorio() {
+    var strValues = "abcdefghijklmnopqrstuvwxyz123456789";
+    var strEmail = "";
+    var strTmp;
+    for (var i = 0; i < 10; i++) {
+        strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));
+        strEmail = strEmail + strTmp;
+    }
+    strTmp = "";
+    strEmail = strEmail + "@";
+    for (var j = 0; j < 8; j++) {
+        strTmp = strValues.charAt(Math.round(strValues.length * Math.random()));
+        strEmail = strEmail + strTmp;
+    }
+    strEmail = strEmail + ".com"
+    return strEmail;
+}
+
 function random(len, options = {}) {
     var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     var result = "",

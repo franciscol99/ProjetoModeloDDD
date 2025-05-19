@@ -42,14 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgendaAppService.cs" />
+    <Compile Include="AgendaTelefonicaAppService.cs" />
     <Compile Include="AnimalAppService.cs" />
     <Compile Include="AppServiceBase.cs" />
     <Compile Include="CarroAppService.cs" />
+    <Compile Include="CorretoraDeImoveisAppService.cs" />
     <Compile Include="FabricanteAppService.cs" />
+    <Compile Include="GerenciadorDeTarefasAppService.cs" />
     <Compile Include="Interface\IAgendaAppService.cs" />
+    <Compile Include="Interface\IAgendaTelefonicaAppService.cs" />
     <Compile Include="Interface\IAnimalAppService.cs" />
     <Compile Include="Interface\IAppServiceBase.cs" />
+    <Compile Include="Interface\ICorretoraDeImoveisAppService.cs" />
     <Compile Include="Interface\IFabricanteAppService.cs" />
+    <Compile Include="Interface\IGerenciadorDeTarefasAppService.cs" />
     <Compile Include="Interface\ILivroAppService.cs" />
     <Compile Include="Interface\IMusicaAppService.cs" />
     <Compile Include="Interface\ICarroAppService.cs" />

@@ -1,0 +1,40 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CorretoraDeImoveisViewModel
+
+@{
+    ViewBag.Title = "Detalhes do Imóvel";
+    ViewBag.ID = Model.CorretoraDeImoveisID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+
+<div>
+    <h4>  @Html.DisplayFor(model => model.CorretoraDeImoveisID) - @Html.DisplayFor(model => model.Endereco) <span class="badge text-bg-info">@Html.DisplayFor(model => model.Tipo) </span></h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+    </dl>
+</div>

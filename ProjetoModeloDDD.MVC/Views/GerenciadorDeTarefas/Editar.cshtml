@@ -1,0 +1,43 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.GerenciadorDeTarefasViewModel
+
+@{
+    ViewBag.Title = "Editar Tarefa";
+    ViewBag.ID = Model.GerenciadorDeTarefasID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnRemover = true;
+}
+
+<h4>  @Html.DisplayFor(model => model.GerenciadorDeTarefasID) - @Html.DisplayFor(model => model.Descricao) <span class="badge text-bg-info">@Html.DisplayFor(model => model.DataVencimento) </span></h4>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row g-3">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.GerenciadorDeTarefasID)
+
+        <div class="col-md-9">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.DataVencimento, htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.DataVencimento, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataVencimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-totvs">Salvar</button>
+        </div>
+    </div>
+}
+
+

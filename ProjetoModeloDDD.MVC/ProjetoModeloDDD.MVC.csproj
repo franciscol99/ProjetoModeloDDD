@@ -181,9 +181,12 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
+    <Compile Include="Controllers\AgendaTelefonicaController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\CarroController.cs" />
+    <Compile Include="Controllers\CorretoraDeImoveisController.cs" />
     <Compile Include="Controllers\FabricanteController.cs" />
+    <Compile Include="Controllers\GerenciadorDeTarefasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivroController.cs" />
     <Compile Include="Controllers\MusicaController.cs" />
@@ -193,10 +196,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AgendaTelefonicaViewModel.cs" />
     <Compile Include="ViewModels\AgendaViewModel.cs" />
     <Compile Include="ViewModels\AnimalViewModel.cs" />
     <Compile Include="ViewModels\CarroViewModel.cs" />
+    <Compile Include="ViewModels\CorretoraDeImoveisViewModel.cs" />
     <Compile Include="ViewModels\FabricanteViewModel.cs" />
+    <Compile Include="ViewModels\GerenciadorDeTarefasViewModel.cs" />
     <Compile Include="ViewModels\LivroViewModel.cs" />
     <Compile Include="ViewModels\MusicaViewModel.cs" />
     <Compile Include="ViewModels\ProdutoViewModel.cs" />
@@ -298,6 +304,21 @@
     <Content Include="Views\Agenda\Detalhes.cshtml" />
     <Content Include="Views\Agenda\Remover.cshtml" />
     <Content Include="Views\Animal\PlaySom.cshtml" />
+    <Content Include="Views\CorretoraDeImoveis\Index.cshtml" />
+    <Content Include="Views\CorretoraDeImoveis\Cadastrar.cshtml" />
+    <Content Include="Views\CorretoraDeImoveis\Remover.cshtml" />
+    <Content Include="Views\CorretoraDeImoveis\Detalhes.cshtml" />
+    <Content Include="Views\CorretoraDeImoveis\Editar.cshtml" />
+    <Content Include="Views\GerenciadorDeTarefas\Index.cshtml" />
+    <Content Include="Views\GerenciadorDeTarefas\Cadastrar.cshtml" />
+    <Content Include="Views\GerenciadorDeTarefas\Editar.cshtml" />
+    <Content Include="Views\GerenciadorDeTarefas\Remover.cshtml" />
+    <Content Include="Views\GerenciadorDeTarefas\Detalhes.cshtml" />
+    <Content Include="Views\AgendaTelefonica\Index.cshtml" />
+    <Content Include="Views\AgendaTelefonica\Cadastrar.cshtml" />
+    <Content Include="Views\AgendaTelefonica\Editar.cshtml" />
+    <Content Include="Views\AgendaTelefonica\Remover.cshtml" />
+    <Content Include="Views\AgendaTelefonica\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

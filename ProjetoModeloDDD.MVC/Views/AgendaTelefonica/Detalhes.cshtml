@@ -1,0 +1,38 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.AgendaTelefonicaViewModel
+
+@{
+    ViewBag.Title = "Detalhes do contato";
+    ViewBag.ID = Model.AgendatelefonicaID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+<div>
+    <h4>  @Html.DisplayFor(model => model.AgendatelefonicaID) - @Html.DisplayFor(model => model.Nome) <span class="badge text-bg-info">@Html.DisplayFor(model => model.Telefone) </span></h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>

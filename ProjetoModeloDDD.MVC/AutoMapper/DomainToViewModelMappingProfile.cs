@@ -24,6 +24,9 @@ namespace ProjetoModeloDDD.MVC.AutoMapper
             Mapper.CreateMap<CarroViewModel, Carro>();
             Mapper.CreateMap<FabricanteViewModel, Fabricante>();
             Mapper.CreateMap<AgendaViewModel, Agenda>();
+            Mapper.CreateMap<AgendaTelefonicaViewModel, AgendaTelefonica>();
+            Mapper.CreateMap<CorretoraDeImoveisViewModel, CorretoraDeImoveis>();
+            Mapper.CreateMap<GerenciadorDeTarefasViewModel, GerenciadorDeTarefas>();
         }
     }
 }

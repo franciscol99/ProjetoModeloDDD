@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.GerenciadorDeTarefasViewModel>
+
+@{
+        ViewBag.Title = "Tarefas";
+        ViewBag.PlaceHolderPesquisar = "(ID, Descrição)";
+        ViewBag.Pesquisar = true;
+        ViewBag.BtnCadastro = true;
+        ViewBag.Hoje = DateTime.Now.ToString("dd/MM/yyyy");
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataVencimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+
+            @if (item.DataVencimento == @ViewBag.Hoje)
+            {
+               <span class="btn btn-warning">@Html.Raw("Hoje")</span>
+            }
+            else
+            {
+                <span class="btn btn-info">@Html.Raw(item.DataVencimento)</span>
+            }
+        </td>
+        <td >
+            @Html.ActionLink("Editar", "Editar", new { id = item.GerenciadorDeTarefasID }, new { @class = "btn btn-light btn-sm" })
+            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.GerenciadorDeTarefasID }, new { @class = "btn btn-light btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

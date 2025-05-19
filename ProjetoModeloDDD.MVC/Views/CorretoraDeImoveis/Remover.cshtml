@@ -1,0 +1,48 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CorretoraDeImoveisViewModel
+
+@{
+    ViewBag.Title = "Remover Imóvel";
+    ViewBag.ID = Model.CorretoraDeImoveisID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+}
+<h3 class="text-danger">
+    Tem certeza que deseja deletar o livro "@Html.DisplayFor(model => model.CorretoraDeImoveisID) - @Html.DisplayFor(model => model.Endereco)
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Tipo) </span>"?
+</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-danger">Remover</button>
+        </div>
+    }
+</div>

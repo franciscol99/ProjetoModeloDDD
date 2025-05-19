@@ -76,6 +76,9 @@ namespace ProjetoModeloDDD.MVC.App_Start
             kernel.Bind<IFabricanteAppService>().To<FabricanteAppService>();
             kernel.Bind<IRegistroCompraAppService>().To<RegistroCompraAppService>();
             kernel.Bind<IAgendaAppService>().To<AgendaAppService>();
+            kernel.Bind<IAgendaTelefonicaAppService>().To<AgendaTelefonicaAppService>();
+            kernel.Bind<ICorretoraDeImoveisAppService>().To<CorretoraDeImoveisAppService>();
+            kernel.Bind<IGerenciadorDeTarefasAppService>().To<GerenciadorDeTarefasAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IProdutoService>().To<ProdutoService>();
@@ -86,6 +89,9 @@ namespace ProjetoModeloDDD.MVC.App_Start
             kernel.Bind<IFabricanteService>().To<FabricanteService>();
             kernel.Bind<IRegistroCompraService>().To<RegistroCompraService>();
             kernel.Bind<IAgendaService>().To<AgendaService>();
+            kernel.Bind<IAgendaTelefonicaService>().To<AgendaTelefonicaService>();
+            kernel.Bind<IGerenciadorDeTarefasService>().To<GerenciadoDeTarefasService>();
+            kernel.Bind<ICorretoraDeImoveisService>().To<CorretoraDeImoveisService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IProdutoRepository>().To<ProdutoRepository>();
@@ -96,6 +102,9 @@ namespace ProjetoModeloDDD.MVC.App_Start
             kernel.Bind<IFabricanteRepository>().To<FabricanteRepository>();
             kernel.Bind<IRegistroCompraRepository>().To<RegistroCompraRepository>();
             kernel.Bind<IAgendaRepository>().To<AgendaRepository>();
+            kernel.Bind<ICorretoraDeImoveisRepository>().To<CorretoraDeImoveisRepository>();
+            kernel.Bind<IAgendaTelefonicaRepository>().To<AgendaTelefonicaRepository>();
+            kernel.Bind<IGerenciadorDeTarefasRepository>().To<GerenciadorDeTarefasRepository>();
         }
     }
 }

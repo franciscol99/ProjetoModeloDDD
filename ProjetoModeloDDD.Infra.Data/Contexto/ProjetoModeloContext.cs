@@ -22,6 +22,9 @@ namespace ProjetoModeloDDD.Infra.Data.Contexto
         public DbSet<Carro> Carros { get; set; }
         public DbSet<Fabricante> Fabricantes { get; set; }
         public DbSet<Agenda> Agendas { get; set; }
+        public DbSet<CorretoraDeImoveis> CorretoraDeImoveis { get; set; }
+        public DbSet<AgendaTelefonica> AgendaTelefonicas { get; set; }
+        public DbSet<GerenciadorDeTarefas> GerenciadorDeTarefas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -47,6 +50,9 @@ namespace ProjetoModeloDDD.Infra.Data.Contexto
             modelBuilder.Configurations.Add(new CarroConfiguration());
             modelBuilder.Configurations.Add(new FabricanteConfiguration());
             modelBuilder.Configurations.Add(new AgendaConfiguration());
+            modelBuilder.Configurations.Add(new CorretoraDeImoveisConfiguration());
+            modelBuilder.Configurations.Add(new AgendaTelefonicaConfiguration());
+            modelBuilder.Configurations.Add(new GerenciadorDeTarefasConfiguration());
         }
 
         public override int SaveChanges()

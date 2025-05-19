@@ -1,0 +1,32 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.GerenciadorDeTarefasViewModel
+
+@{
+    ViewBag.Title = "Detalhes da tarefa";
+    ViewBag.ID = Model.GerenciadorDeTarefasID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+
+<div>
+    <h4>  @Html.DisplayFor(model => model.GerenciadorDeTarefasID) - @Html.DisplayFor(model => model.Descricao) <span class="badge text-bg-info">@Html.DisplayFor(model => model.DataVencimento) </span></h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataVencimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataVencimento)
+        </dd>
+
+    </dl>
+</div>

@@ -1,15 +1,17 @@
-﻿@model ProjetoModeloDDD.MVC.ViewModels.FabricanteViewModel
+﻿@model ProjetoModeloDDD.MVC.ViewModels.AgendaTelefonicaViewModel
 
 @{
-    ViewBag.Title = "Remover fabricante";
-    ViewBag.ID = Model.FabricanteID;
+    ViewBag.Title = "Remover contato da agenda";
+    ViewBag.ID = Model.AgendatelefonicaID;
     ViewBag.BtnVoltar = true;
     ViewBag.BtnEditar = true;
 }
+
 <h3 class="text-danger">
-    Tem certeza que deseja deletar o fabricante "@Html.DisplayFor(model => model.FabricanteID) - @Html.DisplayFor(model => model.Nome)
-    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Cidade) </span>"?
+    Tem certeza que deseja deletar o contato "@Html.DisplayFor(model => model.AgendatelefonicaID) - @Html.DisplayFor(model => model.Nome)
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Telefone) </span>"?
 </h3>
+
 <div>
     <dl class="dl-horizontal">
         <dt>
@@ -21,19 +23,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Endereco)
+            @Html.DisplayNameFor(model => model.Telefone)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Endereco)
+            @Html.DisplayFor(model => model.Telefone)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cidade)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cidade)
+            @Html.DisplayFor(model => model.Email)
         </dd>
 
     </dl>

@@ -53,9 +53,12 @@
   <ItemGroup>
     <Compile Include="Contexto\ProjetoModeloContext.cs" />
     <Compile Include="EntityConfig\AgendaConfiguration.cs" />
+    <Compile Include="EntityConfig\AgendaTelefonicaConfiguration.cs" />
     <Compile Include="EntityConfig\AnimalConfiguration.cs" />
     <Compile Include="EntityConfig\CarroConfiguration.cs" />
+    <Compile Include="EntityConfig\CorretoraDeImoveisConfiguration.cs" />
     <Compile Include="EntityConfig\FabricanteConfiguration.cs" />
+    <Compile Include="EntityConfig\GerenciadorDeTarefasConfiguration.cs" />
     <Compile Include="EntityConfig\LivroConfiguration.cs" />
     <Compile Include="EntityConfig\MusicaConfiguration.cs" />
     <Compile Include="EntityConfig\ProdutoConfiguration.cs" />
@@ -63,9 +66,12 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AgendaRepository.cs" />
+    <Compile Include="Repositories\AgendaTelefonicaRepository.cs" />
     <Compile Include="Repositories\AnimalRepository.cs" />
     <Compile Include="Repositories\CarroRepository.cs" />
+    <Compile Include="Repositories\CorretoraDeImoveisRepository.cs" />
     <Compile Include="Repositories\FabricanteRepository.cs" />
+    <Compile Include="Repositories\GerenciadorDeTarefas.cs" />
     <Compile Include="Repositories\LivroRepository.cs" />
     <Compile Include="Repositories\MusicaRepository.cs" />
     <Compile Include="Repositories\ProdutoRepository.cs" />

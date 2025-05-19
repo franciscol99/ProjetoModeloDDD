@@ -1,12 +1,18 @@
 ﻿@model ProjetoModeloDDD.MVC.ViewModels.RegistroCompraViewModel
 
 @{
-    ViewBag.Title = "Remover";
+    ViewBag.Title = "Remover registro de compra";
     ViewBag.ID = Model.RegistroCompraID;
     ViewBag.BtnVoltar = true;
     ViewBag.BtnEditar = true;
     ViewBag.BtnDetalhes = true;
 }
+
+<h3 class="text-danger">
+    Tem certeza que deseja deletar o fabricante "@Html.DisplayFor(model => model.RegistroCompraID) 
+    - @Html.DisplayFor(model => model.ValorTotal)
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Quantidade) </span>"?
+</h3>
 
 <div>
     <dl class="dl-horizontal">
