@@ -1,0 +1,74 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.RegistroCompraViewModel
+
+@{
+    ViewBag.Title = "Cadastrar compra";
+    ViewBag.BtnVoltar = true;
+    ViewBag.NavItemExtra = new string[] {
+        " <span class=\"nav-link gerarCadastro\">Gerar cadastro</span>"
+    };
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="row g-3">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.ValorTotal, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.ValorTotal, new { htmlAttributes = new { @class = "form-control apenasNumbero" } })
+            @Html.ValidationMessageFor(model => model.ValorTotal, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.Quantidade, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.DataCadastro, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.DataCadastro, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Produto, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            <select class="form-control" name="Produto" id="Produto">
+                <option disabled selected> Selecione o produto </option>
+                @foreach (var f in @ViewBag.Produtos)
+                {
+                    var selecionado = false;
+                    if (@ViewBag.ProdutoSelecionado == f.ProdutoID)
+                    {
+                        selecionado = true;
+                    }
+                    <option value="@Html.Raw(f.ProdutoID)" selected="@selecionado">@Html.Raw(f.Nome)</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" class="btn btn-totvs">Cadastrar</button>
+    </div>
+</div>
+}
+
+<script src="~/Scripts/cadastro.js"></script>
+<script>
+    document.querySelector(".gerarCadastro").addEventListener("click", function () {
+        document.querySelector("#Quantidade").value = Math.floor(Math.random() * 25) + 50;
+        document.querySelector("#ValorTotal").value = Math.floor(Math.random() * 2000) + 50;
+        document.querySelector("#DataCadastro").value = GerarDataAleatoria();
+    })
+</script>

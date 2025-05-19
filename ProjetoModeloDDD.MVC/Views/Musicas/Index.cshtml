@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.MusicaViewModel>
+
+@{
+    ViewBag.Title = "Músicas";
+    ViewBag.PlaceHolderPesquisar = "(ID, Nome, Autor, Gravadora)";
+    ViewBag.Pesquisar = true;
+    ViewBag.BtnCadastro = true;
+    ViewBag.BtnExtra = new string[] {
+       " <a href=\"?P=PlayListRandom\" class=\"btn btn-totvs\">PlayList aleatória</a>",
+       " <a href=\"?P=MusicaRandom\" class=\"btn btn-totvs\">Música aleatória</a>",
+       " <a href=\"?\" class=\"btn btn-totvs\">Reset</a>",
+   };
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gravadora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lancamento)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MusicaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gravadora)
+            </td>
+            <td>
+                @Convert.ToDateTime(item.Lancamento).ToString("dd/MM/yyyy")
+            </td>
+            <td style="display: flex;">
+                @Html.ActionLink("Editar", "Editar", new { id = item.MusicaID }, new { @class = "btn btn-light btn-sm" })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.MusicaID }, new { @class = "btn btn-light btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+

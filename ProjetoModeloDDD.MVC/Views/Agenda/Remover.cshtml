@@ -1,0 +1,50 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.AgendaViewModel
+
+@{
+    ViewBag.Title = "Remover agenda";
+    ViewBag.ID = Model.AgendaID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnDetalhes = true;
+}
+
+<h3 class="text-danger">
+    Tem certeza que deseja deletar a agenda do "@Html.DisplayFor(model => model.AgendaID) - @Html.DisplayFor(model => model.Nome)
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Idade) </span>"?
+</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Altura)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-danger">Remover</button>
+        </div>
+    }
+</div>

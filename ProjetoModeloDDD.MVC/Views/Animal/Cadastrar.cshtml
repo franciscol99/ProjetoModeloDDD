@@ -1,0 +1,63 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.AnimalViewModel
+
+@{
+    ViewBag.Title = "Cadastro de animal";
+    ViewBag.BtnVoltar = true;
+    ViewBag.NavItemExtra = new string[] {
+        " <span class=\"nav-link gerarCadastro\">Gerar cadastro</span>"
+    };
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="row g-3">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Especie, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Especie, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Especie, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Idade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Idade, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Idade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Som, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Som, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Som, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" class="btn btn-totvs">Cadastrar</button>
+    </div>
+</div>
+}
+
+<script src="~/Scripts/cadastro.js"></script>
+<script>
+    document.querySelector(".gerarCadastro").addEventListener("click", function () {
+        document.querySelector("#Nome").value = GerarTextoAleatorio(1, 1, 1);
+        document.querySelector("#Som").value = GerarTextoAleatorio(1, 1, 1) +".mp3";
+        document.querySelector("#Especie").value = GerarTextoAleatorio(1, 1, 2);
+        document.querySelector("#Idade").value = Math.floor(Math.random() * 10) + 40;
+    })
+</script>

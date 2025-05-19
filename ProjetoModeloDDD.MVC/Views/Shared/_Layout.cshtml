@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+    <script src="~/Scripts/index.js"></script>
+</head>
+@{
+    string AcessoDaPagina = Request["acesso"];
+}
+<body>
+
+    @if (AcessoDaPagina != "modal")
+    {
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" style="background-color: #044355">
+            <div class="container">
+                <img src="/images/totvs.png" data-aui-responsive-header-index="0">
+                @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Página inicial", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        @*<li>@Html.ActionLink("TesteMenu", "TesteMenu", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
+                        @*<li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    <div class="container body-content">
+        @if (AcessoDaPagina != "modal")
+        {
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand">@ViewBag.Title</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"></li>
+                            @if (@ViewBag.BtnRemover != null && @ViewBag.BtnRemover)
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Remover", "Remover", new { id = @ViewBag.ID }, new { @class = "nav-link text-danger" })
+                                </li>
+                            }
+                            @if (@ViewBag.BtnEditar != null && @ViewBag.BtnEditar)
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Editar", "Editar", new { id = @ViewBag.ID }, new { @class = "nav-link" })
+                                </li>
+                            }
+                            @if (@ViewBag.BtnDetalhes != null && @ViewBag.BtnDetalhes)
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Detalhes", "Detalhes", new { id = @ViewBag.ID }, new { @class = "nav-link" })
+                                </li>
+                            }
+                            @if (@ViewBag.BtnVoltar != null && @ViewBag.BtnVoltar)
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Index", "Index", null, null, new { @class = "nav-link" })
+                                </li>
+                            }
+                            @if (@ViewBag.NavItemExtra != null)
+                            {
+                                foreach (var navItem in ViewBag.NavItemExtra)
+                                {
+                                    <li class="nav-item"> @Html.Raw(navItem)</li>
+                                }
+                            }
+                        </ul>
+                        @if ((@ViewBag.BtnCadastro != null && @ViewBag.BtnCadastro) || @ViewBag.BtnExtra != null)
+                        {
+                            <div class="container-fluid justify-content-start">
+                                @if (@ViewBag.BtnCadastro != null && @ViewBag.BtnCadastro)
+                                {
+
+                                    @Html.ActionLink("Cadastrar", "Cadastrar", new { }, new { @class = "btn btn-totvs" })
+
+                                }
+                                @if (@ViewBag.BtnExtra != null)
+                                {
+                                    foreach (var Btn in ViewBag.BtnExtra)
+                                    {
+                                        @Html.Raw(Btn)
+                                    }
+                                }
+                            </div>
+                        }
+
+                            @if (@ViewBag.Pesquisar != null && @ViewBag.Pesquisar)
+                            {
+                                <form class="d-flex col-md-6" role="search">
+                                    <input class="form-control me-3" id="search" placeholder="Pesquisar... @ViewBag.PlaceHolderPesquisar" name="search" type="search" aria-label="Search">
+                                    <button class="btn btn-totvs" type="submit">Pesquisar</button>
+                                </form>
+                            }
+                            <hr />
+
+                        </div>
+
+                </div>
+            </nav>
+            <hr />
+        }
+        @RenderBody()
+        @if (AcessoDaPagina != "modal")
+        {
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Projeto DDD</p>
+            </footer>
+        }
+    </div>
+
+    @*MODAL*@
+
+    <div class="modal fade" id="modalIndex" tabindex="-1" aria-labelledby="modalIndexLabel">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalIndexLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Carregando...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary fecharModal" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

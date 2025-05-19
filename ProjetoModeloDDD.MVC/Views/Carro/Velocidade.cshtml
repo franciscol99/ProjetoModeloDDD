@@ -1,0 +1,102 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CarroViewModel
+
+@{
+    ViewBag.Title = "Velocimetro";
+    ViewBag.ID = Model.CarroID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+
+@using (Html.BeginForm("Velocidade", "Carro", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row g-3">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CarroID)
+
+        <div class="col-md-4">
+            <div class="d-grid gap-2">
+                <button  type="submit" data-method="Brecar"  class="btn btn-danger btn-lg">Brecar</button>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="col-md-12 input-group-lg input-group">
+                @Html.EditorFor(model => model.Velocidade, new { htmlAttributes = new { @class = "form-control text-center" } })
+                @Html.ValidationMessageFor(model => model.Velocidade, "", new { @class = "text-danger" })
+                <span class="input-group-text" id="inputGroup-sizing-lg">km/h</span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="d-grid gap-2">
+                <button type="submit" data-method="Acelerar" class="btn btn-success btn-lg">Acelerar</button>
+            </div>
+        </div>
+    </div>
+}
+
+@*SCRIPT*@
+
+@section scripts
+{
+    <script>
+        $(document).on('click', 'form :submit', function (ev) {
+            ev.preventDefault();
+
+            var method = $(this).attr('data-method');
+
+            var data = new FormData();
+            data.append("CarroID", @ViewBag.ID);
+            data.append("Method", method);
+
+            var VelocidadeAtual = 0;
+
+            var url = '@Url.Action("Velocidade", "Carro")'
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: data,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.novaVelocidade >= 0) {
+
+                        //if (result.ErroVelocidade) {
+                        //    alert("A velocidade não pode ser menor que zero")
+                        //}
+
+                        if (method == "Acelerar")
+                            VelocidadeAtual = result.novaVelocidade - 10;
+                        else if(method == "Brecar")
+                            VelocidadeAtual = result.novaVelocidade + 10;
+
+                        $("[data-input='Velocidade'][data-id='@ViewBag.ID']").html(result.novaVelocidade)
+                        animarAceleracaoInput($("#Velocidade"), VelocidadeAtual, result.novaVelocidade, 500);
+
+                    } else {
+                        alert("Erro ao " + method)
+                    }
+                }
+            });
+        });
+
+        function animarAceleracaoInput(obj, start, end, duration) {
+            let start_time = null;
+            const step = (tempo) => {
+                if (!start_time) start_time = tempo;
+                const progresso = Math.min((tempo - start_time) / duration, 1);
+                obj.val(Math.floor(progresso * (end - start) + start));
+                if (progresso < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+    </script>
+}

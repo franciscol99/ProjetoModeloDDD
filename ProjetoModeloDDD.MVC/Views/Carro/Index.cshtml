@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.CarroViewModel>
+
+@{
+    ViewBag.Title = "Carros";
+
+    ViewBag.PlaceHolderPesquisar = "(ID, Nome, Modelo, Ano)";
+    ViewBag.Pesquisar = true;
+    ViewBag.BtnCadastro = true;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Velocidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ano)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                <button type="button"
+                        class="btn btn-light btn-sm editarVelocidade"
+                        data-id="@item.CarroID"
+                        data-input="Velocidade"
+                        data-bs-toggle="modal" data-bs-target="#modalIndex">
+                    @Html.DisplayFor(modelItem => item.Velocidade)
+                </button>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ano)
+            </td>
+            <td style="display: flex;">
+                @*@Html.ActionLink("Velocidade", "Velocidade", new { id = item.CarroID }, new { @class = "btn btn-light btn-sm" })*@
+                @Html.ActionLink("Editar", "Editar", new { id = item.CarroID }, new { @class = "btn btn-light btn-sm" })
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.CarroID }, new { @class = "btn btn-light btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*SCRIPT*@
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $(".editarVelocidade").click(function () {
+                var $this = $(this);
+                var id = $this.attr('data-id');
+                var options = { keyboard: true };
+
+                $.ajax({
+                    type: "GET",
+                    url: '/Carro/Velocidade/' + id + '?acesso=modal',
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "json",
+                    success: function (data) {
+                        Modal({
+                            titulo: "Editar velocidade",
+                            data: data,
+                            footer: false,
+                            options: options,
+                        })
+                    },
+                    error: function () {
+                        alert("Erro ao carregar o conteúdo");
+                    }
+                });
+            });
+        });
+    </script>
+}

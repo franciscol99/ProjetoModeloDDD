@@ -1,0 +1,62 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.RegistroCompraViewModel
+
+@{
+    ViewBag.Title = "Detalhes da Compra";
+    ViewBag.ID = Model.RegistroCompraID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+    </dl>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Produto
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var f in @ViewBag.produtos)
+    {
+
+        <tr>
+            <td>@f.ProdutoID</td>
+            <td>@f.Nome</td>
+            <td> <a class="btn btn-sm btn-primary" href="/Produtos/Detalhes/@f.ProdutoID">Acessar</a></td>
+        </tr>
+
+    }
+</table>

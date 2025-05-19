@@ -1,0 +1,46 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.FabricanteViewModel
+
+@{
+    ViewBag.Title = "Remover";
+    ViewBag.ID = Model.FabricanteID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-danger">Remover</button>
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.LivroViewModel
+
+@{
+    ViewBag.Title = "Detalhes do livro";
+    ViewBag.ID = Model.LivroID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+<div>
+    <h4>  @Html.DisplayFor(model => model.LivroID) - @Html.DisplayFor(model => model.Nome) <span class="badge text-bg-info">@Html.DisplayFor(model => model.Autor) </span></h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Autor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autor)
+        </dd>
+
+    </dl>
+</div>
+

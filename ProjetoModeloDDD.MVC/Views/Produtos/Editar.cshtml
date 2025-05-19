@@ -1,0 +1,127 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.ProdutoViewModel
+
+@{
+    ViewBag.Title = "Editar produto";
+    ViewBag.ID = Model.ProdutoID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnRemover = true;
+    ViewBag.BtnDetalhes = true;
+}
+
+
+
+<h4>
+    @Html.DisplayFor(model => model.ProdutoID)
+    - @Html.DisplayFor(model => model.Nome)
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.CodigoFabrica) </span>
+</h4>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="row g-3">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ProdutoID)
+
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.CodigoFabrica, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.CodigoFabrica, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CodigoFabrica, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Fabricante, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            <select class="form-control" name="Fabricante" id="Fabricante">
+                <option disabled selected> Selecione o fabricante </option>
+                @foreach (var f in @ViewBag.Fabricantes)
+                {
+                    var selected = false;
+
+                    if (@Html.Raw(f.FabricanteID).ToString() ==
+                        Model.Fabricante.ToString())
+                    {
+                        selected = true;
+                    }
+                    <option selected="@selected" value="@Html.Raw(f.FabricanteID)">@Html.Raw(f.Nome)</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.valorCompra, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12 input-group">
+            <div class="input-group-text">R$</div>
+            @Html.EditorFor(model => model.valorCompra, new { htmlAttributes = new { @class = "form-control apenasNumbero" } })
+            @Html.ValidationMessageFor(model => model.valorCompra, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.ValorVenda, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12 input-group">
+            <div class="input-group-text">R$</div>
+            @Html.EditorFor(model => model.ValorVenda, new { htmlAttributes = new { @class = "form-control apenasNumbero" } })
+            @Html.ValidationMessageFor(model => model.ValorVenda, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Estoque, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Estoque, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Estoque, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.EstoqueMin, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.EstoqueMin, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EstoqueMin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.ativo, htmlAttributes: new { @class = "form-label" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.ativo)
+                    @Html.ValidationMessageFor(model => model.ativo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" class="btn btn-totvs">Salvar</button>
+    </div>
+</div>
+
+
+}
+
+

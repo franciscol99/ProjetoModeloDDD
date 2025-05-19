@@ -1,0 +1,55 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.AgendaViewModel
+
+@{
+    ViewBag.Title = "Cadastro de Agenda";
+    ViewBag.BtnVoltar = true;
+    ViewBag.NavItemExtra = new string[] {
+        " <span class=\"nav-link gerarCadastro\">Gerar cadastro</span>"
+    };
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row g-3">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.Idade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Idade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Idade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.Altura, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Altura, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Altura, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-totvs">Cadastrar</button>
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/cadastro.js"></script>
+<script>
+    document.querySelector(".gerarCadastro").addEventListener("click", function () {
+        document.querySelector("#Nome").value = GerarTextoAleatorio(1, 1, 3);
+        document.querySelector("#Idade").value = Math.floor(Math.random() * 15) + 50;
+        document.querySelector("#Altura").value = 70 + Math.floor(Math.random() * 100) + 20;
+    })
+</script>

@@ -1,0 +1,152 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.ProdutoViewModel
+
+@{
+    ViewBag.Title = "Detalhes do produto";
+    ViewBag.ID = Model.ProdutoID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+    ViewBag.NavItemExtra = new string[] {
+        " <a class=\"nav-link\" href=\"/Produtos/Estoque/1\">Estoque</a>",
+    };
+}
+
+<div>
+    <h4>  @Html.DisplayFor(model => model.ProdutoID) 
+    - @Html.DisplayFor(model => model.Nome) 
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.CodigoFabrica) </span></h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoFabrica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoFabrica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valorCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valorCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorVenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstoqueMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstoqueMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @if (@Model.ativo)
+            {
+                <span class="badge text-bg-success">Sim</span>
+            }
+            else
+            {
+                <span class="badge text-bg-danger">Não</span>
+            }
+        </dd>
+    </dl>
+</div>
+<hr />
+<div style="display: flex">
+    <h4>Registro de Compras</h4>
+    <a class="btn btn-totvs" style="margin-left: 10px" href="/RegistroCompra/Cadastrar/@Html.Raw(Model.ProdutoID)">
+    Registrar compra</a>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+           Quantidade
+        </th>
+        <th>Valor Unitário</th>
+        <th>Valor Total</th>
+        <th>Data</th>
+        <th></th>
+    </tr>
+    @foreach (var f in @ViewBag.registroCompras)
+    {
+        var valorUnitario = (f.ValorTotal / f.Quantidade).ToString("#,##0.00");
+        <tr>
+            <td> @f.Quantidade</td>
+            <td> R$ @valorUnitario</td>
+            <td> R$ @f.ValorTotal</td>
+            <td> @f.DataCadastro</td>
+            <td> <a class="btn btn-sm btn-primary" 
+                    href="/RegistroCompra/Detalhes/@f.RegistroCompraID">Acessar</a>
+            </td>
+        </tr>
+
+    }
+</table>
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Métodos</h4>
+    <p>Funções disponíveis na página <strong>@ViewBag.Title</strong></p>
+    <hr>
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Registro de Compra</div>
+                É possível cadastrar uma compra diretamente para o produto visto na página, clicando no botão "Registrar compra" você será levado até a página
+                de cadastro de Registro de compra já com o produto selecionado
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Acessar Registro de compra</div>
+                É possível acessar cada registro de compra, clicando em "Acessar"
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Remover o produto</div>
+                É possível remover o produto, clicando em "Remover" no menu superior
+            </div>
+        </li>
+
+    </ol>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

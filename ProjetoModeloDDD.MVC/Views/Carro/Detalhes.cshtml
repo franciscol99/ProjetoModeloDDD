@@ -1,0 +1,51 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CarroViewModel
+
+@{
+    ViewBag.Title = "Detalhes do carro";
+    ViewBag.ID = Model.CarroID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+<div>
+    <h4>
+        @Html.DisplayFor(model => model.CarroID)
+        - @Html.DisplayFor(model => model.Nome)
+        <span class="badge text-bg-info">@Html.DisplayFor(model => model.Modelo) </span>
+    </h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Velocidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Velocidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+    </dl>
+</div>

@@ -1,0 +1,103 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.ProdutoViewModel
+
+@{
+    ViewBag.Title = "Remover produto";
+    ViewBag.ID = Model.ProdutoID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnDetalhes = true;
+}
+
+<h3 class="text-danger">Tem certeza que deseja deletar o produto "@Html.DisplayFor(model => model.ProdutoID) - @Html.DisplayFor(model => model.Nome) 
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.CodigoFabrica) </span>"?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoFabrica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoFabrica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valorCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valorCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorVenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstoqueMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstoqueMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @if (@Model.ativo)
+            {
+                <span class="badge text-bg-success">Sim</span>
+            }
+            else
+            {
+                <span class="badge text-bg-danger">Não</span>
+            }
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.RegistroCompraID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistroCompraID)
+        </dd>*@
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-danger">Remover</button>
+        </div>
+    }
+</div>

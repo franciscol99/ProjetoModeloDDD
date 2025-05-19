@@ -1,0 +1,109 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.FabricanteViewModel
+
+@{
+    ViewBag.Title = "Detalhes do fabricante";
+    ViewBag.ID = Model.FabricanteID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+
+<div>
+    <h4>
+        @Html.DisplayFor(model => model.FabricanteID)
+        - @Html.DisplayFor(model => model.Nome)
+        <span class="badge text-bg-info">@Html.DisplayFor(model => model.Cidade) </span>
+    </h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+    </dl>
+</div>
+
+<hr />
+<div style="display: flex">
+    <h4>Produtos</h4>
+    <a class="btn btn-totvs" style="margin-left: 10px" href="/Produtos/Cadastrar/@Html.Raw(Model.FabricanteID)">Cadastrar produto</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Produtos
+        </th>
+        <th>
+            Código de Fábrica
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var f in @ViewBag.produtos)
+    {
+
+        <tr>
+            <td>@f.ProdutoID</td>
+            <td>@f.Nome</td>
+            <td>@f.CodigoFabrica</td>
+            <td> <a class="btn btn-sm btn-primary" href="/Produtos/Detalhes/@f.ProdutoID">Acessar</a></td>
+        </tr>
+
+    }
+</table>
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Métodos</h4>
+    <p>Funções disponíveis na página <strong>@ViewBag.Title</strong></p>
+    <hr>
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Produtos</div>
+                É possível cadastrar um novo produto diretamente para o fabricante visto na página, clicando no botão
+                "Cadastrar produto" você será levado até a página
+                de cadastro de Produto já com o fabricante selecionado
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Acessar Produto</div>
+                É possível acessar cada produto, clicando em "Acessar"
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">Remover o fabricante</div>
+                É possível remover o fabricante, clicando em "Remover" no menu superior
+            </div>
+        </li>
+
+    </ol>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

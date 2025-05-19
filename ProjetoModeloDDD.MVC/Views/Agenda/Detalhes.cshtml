@@ -1,0 +1,44 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.AgendaViewModel
+
+@{
+    ViewBag.Title = "Detalhes da agenda";
+    ViewBag.ID = Model.AgendaID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+    ViewBag.BtnRemover = true;
+}
+
+
+<div>
+    <h4>
+        @Html.DisplayFor(model => model.AgendaID)
+        - @Html.DisplayFor(model => model.Nome)
+        <span class="badge text-bg-info">@Html.DisplayFor(model => model.Idade) </span>
+    </h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Altura)
+        </dd>
+
+    </dl>
+</div>

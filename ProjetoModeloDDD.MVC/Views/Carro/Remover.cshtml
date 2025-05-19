@@ -1,0 +1,57 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.CarroViewModel
+
+@{
+    ViewBag.Title = "Remover carro";
+    ViewBag.ID = Model.CarroID;
+    ViewBag.BtnVoltar = true;
+    ViewBag.BtnEditar = true;
+}
+
+<h3 class="text-danger">
+    Tem certeza que deseja deletar o carro "@Html.DisplayFor(model => model.CarroID) - @Html.DisplayFor(model => model.Nome)
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Modelo) </span>"?
+</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Velocidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Velocidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-danger">Remover</button>
+        </div>
+    }
+</div>

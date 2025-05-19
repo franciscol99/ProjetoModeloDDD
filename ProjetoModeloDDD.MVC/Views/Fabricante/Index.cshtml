@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.FabricanteViewModel>
+
+@{
+    ViewBag.Title = "Fabricantes de produtos";
+
+    ViewBag.PlaceHolderPesquisar = "(ID, Nome, Cidade, Endereço, Produtos)";
+    ViewBag.Pesquisar = true;
+    ViewBag.BtnCadastro = true;
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td style="display: flex;">
+            @Html.ActionLink("Editar", "Editar", new { id = item.FabricanteID }, new { @class = "btn btn-light btn-sm" })
+            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.FabricanteID }, new { @class = "btn btn-light btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>
