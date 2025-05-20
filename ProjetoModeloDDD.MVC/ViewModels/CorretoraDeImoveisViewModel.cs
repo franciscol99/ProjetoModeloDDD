@@ -7,6 +7,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
     {
 
         [Key]
+        [DisplayName("ID")]
         public int CorretoraDeImoveisID { get; set; }
 
         [DisplayName("Endereço")]
@@ -25,5 +26,8 @@ namespace ProjetoModeloDDD.MVC.ViewModels
         [Required(ErrorMessage = "Preencha o Preço")]
         [DisplayFormat(DataFormatString = "R$ {0:n}")]
         public double Preco { get; set; }
+
+        [DisplayName("Ativo")]
+        public bool Ativo { get; set; }
     }
 }

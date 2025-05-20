@@ -7,8 +7,9 @@
     ViewBag.BtnRemover = true;
 }
 
-<h4>  @Html.DisplayFor(model => model.GerenciadorDeTarefasID) - @Html.DisplayFor(model => model.Descricao) <span class="badge text-bg-info">@Html.DisplayFor(model => model.DataVencimento) </span></h4>
-
+<h4>  @Html.DisplayFor(model => model.GerenciadorDeTarefasID) - @Html.DisplayFor(model => model.Descricao) 
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.DataVencimento) </span></h4>
+<hr />
 
 @using (Html.BeginForm())
 {

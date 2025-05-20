@@ -319,6 +319,7 @@
     <Content Include="Views\AgendaTelefonica\Editar.cshtml" />
     <Content Include="Views\AgendaTelefonica\Remover.cshtml" />
     <Content Include="Views\AgendaTelefonica\Detalhes.cshtml" />
+    <Content Include="Views\CorretoraDeImoveis\Preco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,8 +7,9 @@
     ViewBag.BtnRemover = true;
 }
 
-<h4>  @Html.DisplayFor(model => model.LivroID) - @Html.DisplayFor(model => model.Nome) <span class="badge text-bg-info">@Html.DisplayFor(model => model.Autor) </span></h4>
-
+<h4>  @Html.DisplayFor(model => model.LivroID) - @Html.DisplayFor(model => model.Nome) 
+    <span class="badge text-bg-info">@Html.DisplayFor(model => model.Autor) </span></h4>
+<hr />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

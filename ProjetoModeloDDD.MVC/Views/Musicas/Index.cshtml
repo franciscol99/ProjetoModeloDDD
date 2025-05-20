@@ -8,15 +8,16 @@
     ViewBag.BtnExtra = new string[] {
        " <a href=\"?P=PlayListRandom\" class=\"btn btn-totvs\">PlayList aleatória</a>",
        " <a href=\"?P=MusicaRandom\" class=\"btn btn-totvs\">Música aleatória</a>",
-       " <a href=\"?\" class=\"btn btn-totvs\">Reset</a>",
+       " <a href=\"/"+@ViewContext.RouteData.Values["controller"].ToString()+"\" class=\"btn btn-totvs\">Reset</a>",
    };
 
 }
 
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.MusicaID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)

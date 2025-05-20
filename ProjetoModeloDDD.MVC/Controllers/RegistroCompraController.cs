@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using AutoMapper;
 using ProjetoModeloDDD.Application;
@@ -33,6 +34,7 @@ namespace ProjetoModeloDDD.MVC.Controllers
                 search = search.ToUpper();
                 registros = _registrocompraApp.GetAll().Where(p =>
                          (Convert.ToString(p.RegistroCompraID) == search) ||
+                         //_produtoApp.GetById(p.Produto).Nome.ToUpper().Contains(search) || 
                          p.Quantidade.ToString().ToUpper().Contains(search) ||
                          p.ValorTotal.ToString().ToUpper().Contains(search))
                     .ToList();

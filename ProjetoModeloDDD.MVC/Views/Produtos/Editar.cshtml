@@ -8,14 +8,12 @@
     ViewBag.BtnDetalhes = true;
 }
 
-
-
 <h4>
     @Html.DisplayFor(model => model.ProdutoID)
     - @Html.DisplayFor(model => model.Nome)
     <span class="badge text-bg-info">@Html.DisplayFor(model => model.CodigoFabrica) </span>
 </h4>
-
+<hr />
 
 @using (Html.BeginForm())
 {

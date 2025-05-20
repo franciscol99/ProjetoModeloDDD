@@ -36,6 +36,10 @@ namespace ProjetoModeloDDD.MVC.Controllers
                          p.Tipo.ToUpper().Contains(search))
                     .ToList();
             }
+            ViewBag.ValorTotal = corretoradeimoveiss.Sum(Imovel => Convert.ToInt32(Imovel.Preco));
+            ViewBag.ValorAtivosTotal = corretoradeimoveiss.Where(p => p.Ativo).Sum(Imovel => Convert.ToInt32(Imovel.Preco));
+            ViewBag.CountTotal = corretoradeimoveiss.Count();
+            ViewBag.CountAtivos = corretoradeimoveiss.Where(p => p.Ativo).Count();
             var corretoradeimoveisViewModel = Mapper.Map<IEnumerable<CorretoraDeImoveis>, IEnumerable<CorretoraDeImoveisViewModel>>(corretoradeimoveiss);
             return View(corretoradeimoveisViewModel);
         }
@@ -109,6 +113,39 @@ namespace ProjetoModeloDDD.MVC.Controllers
                 return RedirectToAction("Index");
             }
             return View(corretoradeimoveis);
+        }
+
+        // GET: Corretoradeimoveiss/Preco/5
+        public ActionResult Preco(int id = 0)
+        {
+            if (id == 0) return RedirectToAction("Index");
+            else
+            {
+                var corretoradeimoveis = _corretoradeimoveisApp.GetById(id);
+                if (corretoradeimoveis == null)
+                    return HttpNotFound();
+
+                var corretoradeimoveisViewModel = Mapper.Map<CorretoraDeImoveis,
+                    CorretoraDeImoveisViewModel>(corretoradeimoveis);
+                return View(corretoradeimoveisViewModel);
+            }
+        }
+
+        // POST: Corretoradeimoveiss/Preco/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+       
+        public ActionResult Preco(int id, double preco)
+        {
+            if (ModelState.IsValid)
+            {
+                var corretoradeimoveisDomain = _corretoradeimoveisApp.GetById(id);
+                corretoradeimoveisDomain.Preco = preco;
+                _corretoradeimoveisApp.Update(corretoradeimoveisDomain);
+
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
 
 

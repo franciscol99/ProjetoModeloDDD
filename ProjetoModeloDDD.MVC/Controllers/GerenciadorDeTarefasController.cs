@@ -23,17 +23,33 @@ namespace ProjetoModeloDDD.MVC.Controllers
         }
 
         // GET: GerenciadorDeTarefass
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, string filtro)
         {
             var gerenciadordetarefass = _gerenciadordetarefasApp.GetAll();
+            ViewBag.Hoje = DateTime.Now;
+            ViewBag.TarefasHojeCount = DateTime.Now.ToString("dd/MM/yyyy");
+
             if (!string.IsNullOrEmpty(search))
             {
                 search = search.ToUpper();
                 gerenciadordetarefass = _gerenciadordetarefasApp.GetAll().Where(p =>
                          (Convert.ToString(p.GerenciadorDeTarefasID) == search) ||
+                         p.DataVencimento.ToString("dd/MM/yyyy").Contains(search) ||
                          p.Descricao.ToUpper().Contains(search))
                     .ToList();
             }
+
+            var TarefasHoje = _gerenciadordetarefasApp.GetAll().Where(p => p.DataVencimento.ToString("dd/MM/yyyy") == ViewBag.Hoje.ToString("dd/MM/yyyy"));
+            ViewBag.TarefasHojeCount = TarefasHoje.ToList().Count;
+
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                TarefasHoje = _gerenciadordetarefasApp.GetAll().Where(p => p.DataVencimento.ToString("dd/MM/yyyy") == filtro);
+                gerenciadordetarefass = TarefasHoje.ToList();
+            }
+
+           
+
             var gerenciadordetarefasViewModel = Mapper.Map<IEnumerable<GerenciadorDeTarefas>, IEnumerable<GerenciadorDeTarefasViewModel>>(gerenciadordetarefass);
             return View(gerenciadordetarefasViewModel);
         }

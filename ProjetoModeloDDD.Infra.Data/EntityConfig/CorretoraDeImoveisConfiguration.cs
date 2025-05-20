@@ -18,6 +18,8 @@ namespace ProjetoModeloDDD.Infra.Data.EntityConfig
 
             Property(p => p.Tipo)
                .HasMaxLength(200);
+
+            Property(p => p.Ativo);
         }
     }
 }

@@ -33,6 +33,7 @@ namespace ProjetoModeloDDD.MVC.Controllers
                          (Convert.ToString(p.MusicaID) == search) ||
                          p.Nome.ToUpper().Contains(search) ||
                          p.Autor.ToUpper().Contains(search) ||
+                         p.Lancamento.ToString().Contains(search) ||
                          p.Gravadora.ToUpper().Contains(search))
                     .ToList();
 

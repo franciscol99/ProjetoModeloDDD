@@ -22,7 +22,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
         [DisplayName("Data de vencimento")]
         [Required(ErrorMessage = "Insira uma data")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public string DataVencimento { get; set; }
+        public DateTime DataVencimento { get; set; }
 
     }
 }

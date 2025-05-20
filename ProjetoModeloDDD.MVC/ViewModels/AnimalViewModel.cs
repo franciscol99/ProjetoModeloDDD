@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoModeloDDD.MVC.ViewModels
 {
     public class AnimalViewModel
     {
         [Key]
+        [DisplayName("ID")]
         public int AnimalID { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome")]

@@ -28,8 +28,6 @@
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li>@Html.ActionLink("Página inicial", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        @*<li>@Html.ActionLink("TesteMenu", "TesteMenu", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
-                        @*<li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
                     </ul>
                 </div>
             </div>
@@ -40,7 +38,7 @@
         {
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand">@ViewBag.Title</a>
+                    <a class="navbar-brand" href="/@ViewContext.RouteData.Values["controller"].ToString()">@ViewBag.Title</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -98,16 +96,16 @@
                             </div>
                         }
 
-                            @if (@ViewBag.Pesquisar != null && @ViewBag.Pesquisar)
-                            {
-                                <form class="d-flex col-md-6" role="search">
-                                    <input class="form-control me-3" id="search" placeholder="Pesquisar... @ViewBag.PlaceHolderPesquisar" name="search" type="search" aria-label="Search">
-                                    <button class="btn btn-totvs" type="submit">Pesquisar</button>
-                                </form>
-                            }
-                            <hr />
+                        @if (@ViewBag.Pesquisar != null && @ViewBag.Pesquisar)
+                        {
+                            <form class="d-flex col-md-6" role="search">
+                                <input class="form-control me-3" id="search" placeholder="Pesquisar... @ViewBag.PlaceHolderPesquisar" name="search" type="search" aria-label="Search">
+                                <button class="btn btn-totvs" type="submit">Pesquisar</button>
+                            </form>
+                        }
+                        <hr />
 
-                        </div>
+                    </div>
 
                 </div>
             </nav>

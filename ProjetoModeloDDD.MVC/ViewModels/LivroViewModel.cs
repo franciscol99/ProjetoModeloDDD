@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoModeloDDD.MVC.ViewModels
 {
@@ -6,6 +7,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
     {
 
         [Key]
+        [DisplayName("ID")]
         public int LivroID { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome")]

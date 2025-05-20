@@ -8,6 +8,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
     public class RegistroCompraViewModel
     {
         [Key]
+        [DisplayName("ID")]
         public int RegistroCompraID { get; set; }
 
         [Required(ErrorMessage = "Preencha o Valor total da compra")]
