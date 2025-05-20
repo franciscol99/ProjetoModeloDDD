@@ -8,12 +8,16 @@
 }
 
 
-<div class="alert alert-info alert-dismissible fade show" role="alert">
-    Preço médio de todos os imóveis: <strong>R$ @Html.Raw(ViewBag.ValorTotal / ViewBag.CountTotal)</strong>
-    <br />
-    Preço médio dos imóveis ativos: <strong>R$ @Html.Raw(ViewBag.ValorAtivosTotal / ViewBag.CountAtivos)</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+@if (ViewBag.CountTotal > 0)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        Preço médio de todos os imóveis: <strong>R$ @Html.Raw(ViewBag.ValorTotal / ViewBag.CountTotal)</strong>
+        <br />
+        Preço médio dos imóveis ativos: <strong>R$ @Html.Raw(ViewBag.ValorAtivosTotal / ViewBag.CountAtivos)</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -92,7 +96,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
                 <div class="fw-bold">Preço Médio dos Imóveis</div>
-               Na parte superior da tela é mostrado o preço médio dos imóveis totais e também apenas dos imóveis disponíveis.
+                Na parte superior da tela é mostrado o preço médio dos imóveis totais e também apenas dos imóveis disponíveis.
             </div>
         </li>
 

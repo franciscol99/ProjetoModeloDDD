@@ -10,7 +10,7 @@ var palavras = [
 ];
 
 function GerarDataAleatoria() {
-    let start = new Date(2020, 31, 12); 
+    let start = new Date(2025, 31, 12); 
     let end = new Date(); 
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString().slice(0, 10);
 }

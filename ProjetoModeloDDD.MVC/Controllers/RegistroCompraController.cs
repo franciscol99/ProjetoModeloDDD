@@ -106,7 +106,7 @@ namespace ProjetoModeloDDD.MVC.Controllers
                 var registrocompra = _registrocompraApp.GetById(id);
                 if (registrocompra == null)
                     return HttpNotFound();
-
+                ViewBag.Produtos = _produtoApp.GetAll();
                 var registrocompraViewModel = Mapper.Map<RegistroCompra, RegistroCompraViewModel>(registrocompra);
                 return View(registrocompraViewModel);
             }

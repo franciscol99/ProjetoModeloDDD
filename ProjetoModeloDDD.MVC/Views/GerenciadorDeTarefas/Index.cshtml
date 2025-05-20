@@ -7,10 +7,14 @@
     ViewBag.BtnCadastro = true;
 }
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    Há <strong>@ViewBag.TarefasHojeCount</strong> tarefas para hoje. <a href="/GerenciadorDeTarefas?filtro=@ViewBag.Hoje.ToString("dd/MM/yyyy")">Clique aqui</a> para ver
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+@if (ViewBag.TarefasHojeCount > 0)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Há <strong>@ViewBag.TarefasHojeCount</strong> tarefas para hoje. <a href="/GerenciadorDeTarefas?filtro=@ViewBag.Hoje.ToString("dd/MM/yyyy")">Clique aqui</a> para ver
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+} 
+
 <table class="table">
     <tr>
         <th>
@@ -27,9 +31,9 @@
 
     @foreach (var item in Model)
     {
-        DateTime DataDoItem = DateTime.Parse(item.DataVencimento.ToString("dd/MM/yyyy"));
-        DateTime DataHoje = DateTime.Parse(@ViewBag.Hoje.ToString("dd/MM/yyyy"));
-        DateTime DataAmanha = DateTime.Parse((DateTime.Now.AddDays(1)).ToString("dd/MM/yyyy"));
+        DateTime DataDoItem = DateTime.ParseExact(item.DataVencimento.ToString("dd/MM/yyyy"), "dd/MM/yyyy", null);
+        DateTime DataHoje = DateTime.ParseExact(@ViewBag.Hoje.ToString("dd/MM/yyyy"), "dd/MM/yyyy", null);
+        DateTime DataAmanha = DateTime.ParseExact((DateTime.Now.AddDays(1)).ToString("dd/MM/yyyy"), "dd/MM/yyyy", null);
         var classBotao = "btn-info";
         var DataBotao = @Html.Raw(item.DataVencimento.ToString("dd/MM/yyyy"));
         <tr>

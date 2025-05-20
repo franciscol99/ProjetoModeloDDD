@@ -67,13 +67,15 @@
 
     @foreach (var f in @ViewBag.produtos)
     {
-
-        <tr>
-            <td>@f.ProdutoID</td>
-            <td>@f.Nome</td>
-            <td>@f.CodigoFabrica</td>
-            <td> <a class="btn btn-sm btn-primary" href="/Produtos/Detalhes/@f.ProdutoID">Acessar</a></td>
-        </tr>
+        if (@f.Fabricante == Model.FabricanteID)
+        {
+            <tr>
+                <td>@f.ProdutoID</td>
+                <td>@f.Nome</td>
+                <td>@f.CodigoFabrica</td>
+                <td> <a class="btn btn-sm btn-primary" href="/Produtos/Detalhes/@f.ProdutoID">Acessar</a></td>
+            </tr>
+        }
 
     }
 </table>

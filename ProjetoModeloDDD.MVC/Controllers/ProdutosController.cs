@@ -59,7 +59,11 @@ namespace ProjetoModeloDDD.MVC.Controllers
 
                 var produtoViewModel = Mapper.Map<Produto, ProdutoViewModel>(produto);
                 ViewBag.registroCompras = _registrocompraApp.GetAll().Where(p => p.Produto.ToString() == produto.ProdutoID.ToString());
-
+                if(produto.Fabricante > 0)
+                {
+                    ViewBag.Fabricante = _fabricanteApp.GetAll().Where(p => p.FabricanteID.ToString() == produto.Fabricante.ToString()).First();
+                }
+                   
                 return View(produtoViewModel);
             }
         }

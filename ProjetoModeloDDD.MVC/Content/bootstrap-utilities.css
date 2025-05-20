@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootstrap Utilities v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
@@ -4263,4 +4263,20 @@
   }
 }
 
+.btn-totvs {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #044355;
+    --bs-btn-border-color: #044355;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #044355;
+    --bs-btn-hover-border-color: #044355;
+    --bs-btn-focus-shadow-rgb: 225, 83, 97;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #044355;
+    --bs-btn-active-border-color: #a52834;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #044355;
+    --bs-btn-disabled-border-color: #044355;
+}
 /*# sourceMappingURL=bootstrap-utilities.css.map */

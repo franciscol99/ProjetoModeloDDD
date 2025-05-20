@@ -73,6 +73,21 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Fabricante)
+        </dt>
+        @if (ViewBag.Fabricante != null)
+        {
+        <dd>
+            <a class="" href="/Fabricante/Detalhes/@ViewBag.Fabricante.FabricanteID">@ViewBag.Fabricante.Nome</a>
+        </dd>
+        }
+        else
+        {
+            <dd>
+               Sem fabricante cadastrado
+            </dd>
+        }
+        <dt>
             @Html.DisplayNameFor(model => model.ativo)
         </dt>
 

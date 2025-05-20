@@ -32,6 +32,24 @@
         </div>
     </div>
 
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Produto, htmlAttributes: new { @class = "form-label" })
+        <div class="col-md-12">
+            <select class="form-control" name="Produto" id="Produto">
+                <option disabled selected> Selecione o produto </option>
+                @foreach (var f in @ViewBag.Produtos)
+                {
+                    var selecionado = false;
+                    if (Model.Produto == f.ProdutoID)
+                    {
+                        selecionado = true;
+                    }
+                    <option value="@Html.Raw(f.ProdutoID)" selected="@selecionado">@Html.Raw(f.Nome)</option>
+                }
+            </select>
+        </div>
+    </div>
+
     <div class="alert alert-info">Realizada em @Html.Raw(Model.DataCadastro)</div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
