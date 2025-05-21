@@ -60,3 +60,6 @@ tr[data-ativo="False"] {
     --bs-btn-disabled-bg: #044355;
     --bs-btn-disabled-border-color: #044355;
 }
+td.td-menu {
+    white-space: nowrap;
+}

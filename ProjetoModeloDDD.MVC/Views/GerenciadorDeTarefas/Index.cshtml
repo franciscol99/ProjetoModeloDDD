@@ -23,7 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
-        <th>
+        <th style="white-space: nowrap;">
             @Html.DisplayNameFor(model => model.DataVencimento)
         </th>
         <th></th>
@@ -42,27 +42,31 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descricao)
+                <br />
+                <i style="font-size: 11px;">Cadastrado em @Html.DisplayFor(modelItem => item.DataCadastro)</i>
             </td>
-            <td class="d-grid gap-2">
-                @if (item.DataVencimento.ToString("dd/MM/yyyy") == @ViewBag.Hoje.ToString("dd/MM/yyyy"))
+            <td style="vertical-align: middle;">
+                @if (item.DataVencimento.ToString("dd/MM/yyyy") == DataHoje.ToString("dd/MM/yyyy"))
                 {
                     classBotao = "btn-success";
-                    DataBotao = @Html.Raw("Hoje");
+                    DataBotao = @Html.Raw("Hoje" + " - <i style=\"font-size: 12px;\">" + DataDoItem.ToString("dd/MM/yyyy") + "</i>");
                 }
                 else if (DataDoItem == DataAmanha)
                 {
                     classBotao = "btn-warning";
-                    DataBotao = @Html.Raw("Amanhã");
+                    DataBotao = @Html.Raw("Amanhã" + " - <i style=\"font-size: 12px;\">" + DataDoItem.ToString("dd/MM/yyyy") + "</i>");
                 }
                 else if (DataDoItem <= DataHoje)
                 {
                     classBotao = "btn-danger";
-                    DataBotao = @Html.Raw("Vencida");
+                    DataBotao = @Html.Raw("Vencida" + " - <i style=\"font-size: 12px;\">" + DataDoItem.ToString("dd/MM/yyyy") + "</i>");
                 }
 
-                <a href="/GerenciadorDeTarefas?filtro=@Html.Raw(item.DataVencimento.ToString("dd/MM/yyyy"))" class="btn @classBotao">@DataBotao</a>
+                <a style="width: 100%; white-space: nowrap;" href="/GerenciadorDeTarefas?filtro=@Html.Raw(item.DataVencimento.ToString("dd/MM/yyyy"))" class="btn @classBotao">
+                    @DataBotao
+                </a>
             </td>
-            <td>
+            <td class="td-menu">
                 @Html.ActionLink("Editar", "Editar", new { id = item.GerenciadorDeTarefasID }, new { @class = "btn btn-light btn-sm" })
                 @Html.ActionLink("Detalhes", "Detalhes", new { id = item.GerenciadorDeTarefasID }, new { @class = "btn btn-light btn-sm" })
             </td>

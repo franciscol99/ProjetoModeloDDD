@@ -24,5 +24,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataVencimento { get; set; }
 
+        public DateTime DataCadastro { get; set; }
+
     }
 }

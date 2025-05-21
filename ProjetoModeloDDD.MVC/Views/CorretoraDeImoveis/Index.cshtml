@@ -11,9 +11,11 @@
 @if (ViewBag.CountTotal > 0)
 {
     <div class="alert alert-info alert-dismissible fade show" role="alert">
-        Preço médio de todos os imóveis: <strong>R$ @Html.Raw(ViewBag.ValorTotal / ViewBag.CountTotal)</strong>
+        Preço médio de todos os imóveis: <strong>@string.Format("{0:C}", Convert.ToDecimal(ViewBag.ValorTotal / ViewBag.CountTotal));</strong>
         <br />
-        Preço médio dos imóveis ativos: <strong>R$ @Html.Raw(ViewBag.ValorAtivosTotal / ViewBag.CountAtivos)</strong>
+        
+
+        Preço médio dos imóveis ativos: <strong>@string.Format("{0:C}", Convert.ToDecimal(ViewBag.ValorAtivosTotal / ViewBag.CountAtivos));</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }

@@ -7,5 +7,6 @@ namespace ProjetoModeloDDD.Domain.Entities
         public int GerenciadorDeTarefasID { get; set; }
         public string Descricao { get; set; }
         public DateTime DataVencimento { get; set; }
+        public DateTime DataCadastro { get; set; }
     }
 }
