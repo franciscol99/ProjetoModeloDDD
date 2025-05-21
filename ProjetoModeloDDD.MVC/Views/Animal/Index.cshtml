@@ -61,7 +61,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Idade)
             </td>
-            <td style="display: flex;">
+            <td class="td-menu">
                 @Html.ActionLink("Editar", "Editar", new { id = item.AnimalID }, new { @class = "btn btn-light btn-sm" })
                 @Html.ActionLink("Detalhes", "Detalhes", new { id = item.AnimalID }, new { @class = "btn btn-light btn-sm" })
             </td>

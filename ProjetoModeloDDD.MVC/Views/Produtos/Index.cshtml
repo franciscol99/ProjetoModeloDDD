@@ -85,10 +85,10 @@
                     <i>Sem fabricante</i>
                 }
             </td>
-            <td>
+            <td class="no-wrap">
                 @Html.DisplayFor(modelItem => item.valorCompra)
             </td>
-            <td>
+            <td class="no-wrap">
                 @Html.DisplayFor(modelItem => item.ValorVenda)
             </td>
             <td style="text-align: center">
@@ -119,7 +119,7 @@
                     <span class="badge text-bg-danger">Não</span>
                 }
             </td>
-            <td >
+            <td class="td-menu">
                 @*@Html.ActionLink("Estoque", "Estoque", new { id = item.ProdutoID }, new { @class = "btn btn-light btn-sm" })*@
                 @Html.ActionLink("Editar", "Editar", new { id = item.ProdutoID }, new { @class = "btn btn-light btn-sm" })
                 @Html.ActionLink("Detalhes", "Detalhes", new { id = item.ProdutoID }, new { @class = "btn btn-light btn-sm" })

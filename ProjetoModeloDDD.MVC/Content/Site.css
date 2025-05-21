@@ -63,3 +63,11 @@ tr[data-ativo="False"] {
 td.td-menu {
     white-space: nowrap;
 }
+
+table td, table th {
+    vertical-align: middle;
+}
+
+.no-wrap {
+    white-space: nowrap !important;
+}

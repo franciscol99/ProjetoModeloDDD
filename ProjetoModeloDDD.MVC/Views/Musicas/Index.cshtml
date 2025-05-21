@@ -52,7 +52,7 @@
             <td>
                 @Convert.ToDateTime(item.Lancamento).ToString("dd/MM/yyyy")
             </td>
-            <td style="display: flex;">
+            <td class="td-menu">
                 @Html.ActionLink("Editar", "Editar", new { id = item.MusicaID }, new { @class = "btn btn-light btn-sm" })
                 @Html.ActionLink("Detalhes", "Detalhes", new { id = item.MusicaID }, new { @class = "btn btn-light btn-sm" })
             </td>
